@@ -39,6 +39,7 @@ gem 'simple_form'
 gem 'enumerize'
 gem 'jquery-rails'
 gem 'carrierwave', '~> 1.0'
+gem 'hashid-rails', '~> 1.0'
 
 
 # Use Capistrano for deployment
