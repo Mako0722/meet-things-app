@@ -5,6 +5,7 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.text :description, null: false
       t.integer :price, null: false
       t.string :unit, null: false, default: 'yen'
+      t.string :image, null: false 
       t.timestamps
     end
   end

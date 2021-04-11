@@ -35,6 +35,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'hamlit'
 gem 'active_decorator'
+gem 'simple_form'
+gem 'enumerize'
+gem 'jquery-rails'
+gem 'carrierwave', '~> 1.0'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
