@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210411152752) do
+ActiveRecord::Schema.define(version: 20210413090203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,22 @@ ActiveRecord::Schema.define(version: 20210411152752) do
     t.datetime "updated_at",                  null: false
   end
 
+  create_table "purchase_record_products", force: :cascade do |t|
+    t.integer  "purchase_record_id", null: false
+    t.integer  "product_id",         null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["product_id"], name: "index_purchase_record_products_on_product_id", using: :btree
+    t.index ["purchase_record_id"], name: "index_purchase_record_products_on_purchase_record_id", using: :btree
+  end
+
+  create_table "purchase_records", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_purchase_records_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -60,4 +76,7 @@ ActiveRecord::Schema.define(version: 20210411152752) do
   add_foreign_key "basket_products", "baskets"
   add_foreign_key "basket_products", "products"
   add_foreign_key "baskets", "users"
+  add_foreign_key "purchase_record_products", "products"
+  add_foreign_key "purchase_record_products", "purchase_records"
+  add_foreign_key "purchase_records", "users"
 end
